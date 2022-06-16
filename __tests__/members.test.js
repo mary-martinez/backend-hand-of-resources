@@ -24,6 +24,14 @@ describe('members routes', () => {
     });
   });
 
+  it('POST /members should create a new member', async () => {
+    const res = await (await request(app).post('/members')).send({
+      name: 'Iulia',
+      age: 31
+    });
+    expect(res.status).toBe(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
