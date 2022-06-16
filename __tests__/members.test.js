@@ -16,7 +16,12 @@ describe('members routes', () => {
 
   it('/members/:id should return a family member with details', async () => {
     const res = await request(app).get('/members/3');
-    expect(res.body.name).toEqual('Olivia');
+    expect(res.body).toEqual({
+      id: '3',
+      name: 'Olivia',
+      nickname: 'LiviLou',
+      age: 1
+    });
   });
 
   afterAll(() => {
