@@ -25,7 +25,7 @@ describe('members routes', () => {
   });
 
   it('POST /members should create a new member', async () => {
-    const res = await (await request(app).post('/members')).send({
+    const res = await request(app).post('/members').send({
       name: 'Iulia',
       age: 31
     });
