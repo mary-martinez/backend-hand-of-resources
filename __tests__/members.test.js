@@ -33,7 +33,7 @@ describe('members routes', () => {
   });
 
   it('PUT /members/:id should update member', async () => {
-    const res = await (await request(app).put('/members/2')).send({
+    const res = await request(app).put('/members/2').send({
       nickname: 'Mama'
     });
     expect(res.status).toBe(200);
