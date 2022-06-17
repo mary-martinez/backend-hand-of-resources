@@ -10,7 +10,7 @@ describe('members routes', () => {
 
   it('/members should return a list of member names', async () => {
     const res = await request(app).get('/members');
-    expect(res.body.length).toEqual(5);
+    expect(res.body.length).toEqual(6);
     expect(res.body[0].name).toEqual('Marty');
   });
 
@@ -37,6 +37,12 @@ describe('members routes', () => {
       nickname: 'Mama'
     });
     expect(res.status).toBe(200);
+  });
+
+  it('DELETE /members/:id should delete a member', async () => {
+    const res = await request(app).delete('/members/6');
+    expect(res.status).toBe(200);
+
   });
 
   afterAll(() => {

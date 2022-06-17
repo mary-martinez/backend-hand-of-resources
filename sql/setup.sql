@@ -15,4 +15,5 @@ INSERT INTO members (name, nickname, age) VALUES
 ('Mary', null, 31),
 ('Olivia', 'LiviLou', 1),
 ('Melody', 'Pillowdy', 8),
-('Tempo', 'Mento', 8);
+('Tempo', 'Mento', 8),
+('Fake', null, 100);
