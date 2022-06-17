@@ -20,6 +20,17 @@ describe('foods routes', () => {
     expect(res.body.length).toEqual(5);
   });
 
+  it('/foods/:id should return details of a food', async () => {
+    const res = await request(app).get('/foods/2');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '2',
+      name: 'sushi',
+      origin: 'Japan',
+      joy: 8
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
