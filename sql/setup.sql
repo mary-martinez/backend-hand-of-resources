@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
 DROP table if exists members;
+DROP table if exists foods;
 
 CREATE table members (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -17,3 +18,17 @@ INSERT INTO members (name, nickname, age) VALUES
 ('Melody', 'Pillowdy', 8),
 ('Tempo', 'Mento', 8),
 ('Fake', null, 100);
+
+CREATE table foods(
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  origin VARCHAR,
+  joy INTEGER
+);
+
+INSERT INTO foods (name, origin, joy) VALUES
+('pizza', 'Italy', 7),
+('sushi', 'Japan', 8),
+('hot & sour soup', 'China', 7),
+('hamburger', null, 6),
+('grilled chicken', null, 5);
