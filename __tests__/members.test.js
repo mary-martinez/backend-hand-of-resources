@@ -32,6 +32,13 @@ describe('members routes', () => {
     expect(res.status).toBe(200);
   });
 
+  it('PUT /members/:id should update member', async () => {
+    const res = await (await request(app).put('/members/2')).send({
+      nickname: 'Mama'
+    });
+    expect(res.status).toBe(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
