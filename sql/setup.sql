@@ -38,10 +38,10 @@ CREATE table drinks(
   id BIGINT GENERATED ALWAYS AS IDENTITY,
   name VARCHAR NOT NULL,
   alcohol BOOLEAN NOT NULL,
-  carbontated BOOLEAN
+  carbonated BOOLEAN
 );
 
-INSERT INTO drinks (name, alcohol, carbontated) VALUES
+INSERT INTO drinks (name, alcohol, carbonated) VALUES
 ('water', false, false),
 ('coke', false, true),
 ('coconut water', false, true),

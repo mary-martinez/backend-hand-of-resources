@@ -18,6 +18,16 @@ describe('drinks routes', () => {
     expect(res.status).toEqual(200);
     expect(res.body.name).toEqual('wine');
   });
+  it('POST /drinks should add a drink', async () => {
+    const res = await request(app).post('/drinks').send({
+      name: 'juice',
+      alcohol: false,
+      carbonated: false
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get(`/drinks/${res.body.id}`);
+    expect(res2.body.name).toEqual('juice');
+  });
   afterAll(() => {
     pool.end();
   });
