@@ -28,6 +28,14 @@ describe('drinks routes', () => {
     const res2 = await request(app).get(`/drinks/${res.body.id}`);
     expect(res2.body.name).toEqual('juice');
   });
+  it('PUT /drinks/:id should update a drink', async () => {
+    const res = await request(app).put('/drinks/2').send({
+      name: 'dr.pepper'
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get(`/drinks/${res.body.id}`);
+    expect(res2.body.name).toEqual('dr.pepper');
+  });
   afterAll(() => {
     pool.end();
   });
