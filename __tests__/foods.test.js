@@ -31,6 +31,26 @@ describe('foods routes', () => {
     });
   });
 
+  it('POST /foods should add a food', async () => {
+    const res = await request(app).post('/foods').send({
+      name: 'pasta',
+      origin: 'Italy',
+      joy: 9
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get(`/foods/${res.body.id}`);
+    expect(res2.body.name).toEqual('pasta');
+  });
+
+  it('PUT /foods/:id should update a food', async () => {
+    const res = await request(app).put('/foods/1').send({
+      joy: 9
+    });
+    expect(res.status).toEqual(200);
+    expect(res.body.name).toEqual('pizza');
+    expect(res.body.joy).toEqual(9);
+  });
+
   afterAll(() => {
     pool.end();
   });
