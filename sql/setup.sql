@@ -3,6 +3,7 @@
 
 DROP table if exists members;
 DROP table if exists foods;
+DROP table if exists beverages;
 
 CREATE table members (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -32,3 +33,17 @@ INSERT INTO foods (name, origin, joy) VALUES
 ('hot & sour soup', 'China', 7),
 ('hamburger', null, 6),
 ('grilled chicken', null, 5);
+
+CREATE table beverages(
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  alcohol BOOLEAN NOT NULL,
+  carbontated BOOLEAN
+);
+
+INSERT INTO beverages (name, alcohol, carbontated) VALUES
+('water', false, false),
+('coke', false, true),
+('coconut water', false, true),
+('wine', true, null),
+('truly', true, true);
