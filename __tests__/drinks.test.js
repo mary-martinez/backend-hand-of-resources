@@ -36,6 +36,12 @@ describe('drinks routes', () => {
     const res2 = await request(app).get(`/drinks/${res.body.id}`);
     expect(res2.body.name).toEqual('dr.pepper');
   });
+  it('DELETE /drinks/:id should delete a drink', async () => {
+    const res = await request(app).delete('/drinks/5');
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get('/drinks/5');
+    expect(res2.body).not.toEqual({});
+  });
   afterAll(() => {
     pool.end();
   });
