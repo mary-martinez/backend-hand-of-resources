@@ -13,6 +13,11 @@ describe('drinks routes', () => {
     expect(res.body.length).toEqual(5);
     expect(res.body[0].name).toEqual('water');
   });
+  it('/drinks/:id', async () => {
+    const res = await request(app).get('/drinks/4');
+    expect(res.status).toEqual(200);
+    expect(res.body.name).toEqual('wine');
+  });
   afterAll(() => {
     pool.end();
   });
