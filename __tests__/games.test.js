@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
   it('/games should return a list of games', async () => {
-    const res = await pool.query('/games');
+    const res = await request(app).get('/games');
     expect(res.status).toEqual(200);
     expect(res.body.length).toEqual(4);
     expect(res.body[0].type).toEqual('Card');
