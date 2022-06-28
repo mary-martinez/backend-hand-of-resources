@@ -25,10 +25,18 @@ describe('backend-express-template routes', () => {
       type: 'Video',
       minPlayers: 1
     });
-    console.log('res.body', res.body);
     expect(res.status).toEqual(200);
     const res2 = await request(app).get(`/games/${res.body.id}`);
     expect(res2.body.name).toEqual('Zelda');
+  });
+  it('PUT /games/:id should update a game', async () => {
+    const res = await request(app).put('/games/4').send({
+      minPlayers: 3
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get('/games/4');
+    expect(res2.body.minPlayers).toEqual(3);
+
   });
   afterAll(() => {
     pool.end();
