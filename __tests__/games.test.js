@@ -36,7 +36,10 @@ describe('backend-express-template routes', () => {
     expect(res.status).toEqual(200);
     const res2 = await request(app).get('/games/4');
     expect(res2.body.minPlayers).toEqual(3);
-
+  });
+  it('DELETE /games/:id should delete a game', async () => {
+    const res = await request(app).delete('/games/3');
+    expect(res.status).toEqual(200);
   });
   afterAll(() => {
     pool.end();
