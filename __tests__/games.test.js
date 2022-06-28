@@ -13,6 +13,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.length).toEqual(4);
     expect(res.body[0].type).toEqual('Card');
   });
+  it('/games/:id should return game details for a specific game', async () => {
+    const res = await request(app).get('/games/4');
+    expect(res.status).toEqual(200);
+    expect(res.body.name).toEqual('Candy Land');
+    expect(res.body.type).toEqual('Board');
+  });
   afterAll(() => {
     pool.end();
   });
