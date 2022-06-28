@@ -5,6 +5,7 @@ DROP table if exists members;
 DROP table if exists foods;
 DROP table if exists drinks;
 DROP table if exists games;
+DROP table if exists fruits;
 
 CREATE table members (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -61,4 +62,16 @@ INSERT INTO games (name, type, min_players) VALUES
 ('Ultimate Frisbee', 'Sport', 14),
 ('War', 'Card', 2),
 ('Candy Land', 'Board', 2);
+
+CREATE table fruits (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  type VARCHAR
+);
+
+INSERT INTO fruits (name, type) VALUES
+('Apple', null),
+('Strawberry', 'Berry'),
+('Peach', 'Stonefruit'),
+('Tomato', 'Nightshade');
 
