@@ -39,6 +39,10 @@ describe('backend-express-template routes', () => {
     const res2 = await request(app).get('/fruits/1');
     expect(res2.body.type).toEqual('General');
   });
+  it('DELETE /fruits/:id should delete a fruit', async () => {
+    const res = await request(app).delete('/fruits/1');
+    expect(res.status).toEqual(200);
+  });
   afterAll(() => {
     pool.end();
   });
