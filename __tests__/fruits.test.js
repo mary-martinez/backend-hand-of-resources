@@ -31,6 +31,14 @@ describe('backend-express-template routes', () => {
       type: 'Tropical'
     });
   });
+  it('PUT /fruits/:id should update a fruit', async () => {
+    const res = await request(app).put('/fruits/1').send({
+      type: 'General'
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get('/fruits/1');
+    expect(res2.body.type).toEqual('General');
+  });
   afterAll(() => {
     pool.end();
   });
