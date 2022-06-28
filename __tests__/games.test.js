@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     expect(res.body.name).toEqual('Candy Land');
     expect(res.body.type).toEqual('Board');
   });
+  it('POST /games shouoold create a new game', async () => {
+    const res = await request(app).post('/games').send({
+      name: 'Zelda',
+      type: 'Video',
+      minPlayers: 1
+    });
+    console.log('res.body', res.body);
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get(`/games/${res.body.id}`);
+    expect(res2.body.name).toEqual('Zelda');
+  });
   afterAll(() => {
     pool.end();
   });
