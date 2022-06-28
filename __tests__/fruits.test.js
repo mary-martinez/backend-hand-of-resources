@@ -18,6 +18,19 @@ describe('backend-express-template routes', () => {
     expect(res.status).toEqual(200);
     expect(res.body.type).toEqual('Berry');
   });
+  it('POST /fruits should add a fruit', async () => {
+    const res = await request(app).post('/fruits').send({
+      name: 'Pineapple',
+      type: 'Tropical'
+    });
+    expect(res.status).toEqual(200);
+    const res2 = await request(app).get(`/fruits/${res.body.id}`);
+    expect(res2.body).toEqual({
+      id: res.body.id,
+      name: 'Pineapple',
+      type: 'Tropical'
+    });
+  });
   afterAll(() => {
     pool.end();
   });
